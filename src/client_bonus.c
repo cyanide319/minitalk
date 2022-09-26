@@ -6,7 +6,7 @@
 /*   By: tbeaudoi <tbeaudoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:11:17 by tbeaudoi          #+#    #+#             */
-/*   Updated: 2022/08/11 22:13:20 by tbeaudoi         ###   ########.fr       */
+/*   Updated: 2022/08/11 21:55:37 by tbeaudoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	sig_receiver(int signum, siginfo_t *info, void *context)
 		c_received++;
 	else
 	{
+		ft_printf ("character received: %d", c_received);
 		exit(0);
 	}
 }
@@ -102,6 +103,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error. Need two arguments; pid + message. \n");
 		return (1);
 	}
+	ft_printf("Character sent: %d \n", ft_strlen(argv[2]));
 	sa.sa_sigaction = &sig_receiver;
 	sa.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &sa, NULL);
